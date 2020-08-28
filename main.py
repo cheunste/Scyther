@@ -15,7 +15,8 @@ def get_variable_name(varexp_line):
 def create_varexp_dictionary(varexp_file):
 	with open(varexp_file) as f:
 		new_dict = {get_variable_name(line):line for line in f}
-	return new_dict
+	sorted_dict = dict(sorted(new_dict.items(), key=lambda item: item[0]))
+	return sorted_dict
 
 
 def get_extraction_tags(user_tag_regex, varexp_dictionary):
