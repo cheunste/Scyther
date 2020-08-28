@@ -13,7 +13,7 @@ class test_varexp_reader(unittest.TestCase):
 	def test_compile_variable_name(self):
 		variable_name = main.get_variable_name(self.test_line)
 		expected_name = "DESER.AVC.ConsigTensFueraRango"
-		self.assertTrue(variable_name,expected_name)
+		self.assertTrue(variable_name == expected_name, "The variable names are different")
 
 
 	def test_create_varexp_dictionary(self):
