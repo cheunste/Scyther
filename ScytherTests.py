@@ -1,5 +1,5 @@
 import unittest
-import main
+import Scyther
 import re
 
 
@@ -11,24 +11,24 @@ class test_varexp_reader(unittest.TestCase):
 	site_name_regex = "(?<=\,)\w{5}(?=\,)"
 
 	def test_compile_variable_name(self):
-		variable_name = main.get_variable_name(self.test_line)
+		variable_name = Scyther.get_variable_name(self.test_line)
 		expected_name = "DESER.AVC.ConsigTensFueraRango"
 		self.assertTrue(variable_name == expected_name, "The variable names are different")
 
 
 	def test_create_varexp_dictionary(self):
-		result = main.create_varexp_dictionary("./Desert Wind Varexp.txt")
+		result = Scyther.create_varexp_dictionary("./Desert Wind Varexp.txt")
 		self.assertTrue(isinstance(result,dict),f"{result} is not a dict type")
 
 
 	def test_find_keys_based_on_regex(self):
 		user_tag_regex = r"\bT081\b"
-		result_list = main.get_extraction_tags(user_tag_regex,self.test_dict)
+		result_list = Scyther.get_extraction_tags(user_tag_regex, self.test_dict)
 		self.assertTrue(len(result_list) == 5, f"The list contains {len(result_list)} keys and not 5 as expected")
 
 
 	def test_create_extracted_varexp(self):
-		main.separate_tags_from_varexp(self.test_keys,self.test_dict)
+		Scyther.separate_tags_from_varexp(self.test_keys, self.test_dict)
 
 
 if __name__ == '__main__':

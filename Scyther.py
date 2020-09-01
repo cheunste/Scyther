@@ -43,12 +43,12 @@ def main():
 	parser = argparse.ArgumentParser(description="This script extracts a PcVue tag from a varexp file given a regex")
 	parser.add_argument("-filePath",default="./Varexp.txt", metavar="fp", type=str,
 	                    help="The file path to the varexp file. Can be on a remote UCC")
-	parser.add_argument("-regex", help="The regex of the varexp tag you want to filter out")
+	parser.add_argument("-filter", help="The regex of the varexp tag you want to filter out")
 	args = parser.parse_args()
 
-	user_regex = args.regex
+	user_regex = args.filter
 	varexp_file_path = args.filePath
-	print(f"user regex {user_regex}")
+	print(f"user filter {user_regex}")
 	print(f"varexp path {varexp_file_path}")
 	logging.debug(f"Using the varexp in path {varexp_file_path}")
 	logging.debug(f"User regex: {user_regex}")
