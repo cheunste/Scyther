@@ -13,8 +13,10 @@ def get_variable_name(varexp_line):
 
 
 def create_varexp_dictionary(varexp_file):
+	minimum_line_length = 200
 	with open(varexp_file) as f:
-		new_dict = {get_variable_name(line):line for line in f}
+		new_dict = {get_variable_name(line):line for line in f if len(line) > minimum_line_length}
+		print(len(new_dict.keys()))
 	sorted_dict = dict(sorted(new_dict.items(), key=lambda item: item[0]))
 	return sorted_dict
 
