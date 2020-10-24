@@ -30,6 +30,9 @@ class test_varexp_reader(unittest.TestCase):
 	def test_create_extracted_varexp(self):
 		Scyther.separate_tags_from_varexp(self.test_keys, self.test_dict)
 
+	def test_column_filter(self):
+		content=Scyther.get_column(self.test_dict,1)
+		self.assertTrue(content == "ACM",f"{content} is getting returend and not ACM")
 
 if __name__ == '__main__':
 	unittest.main()
