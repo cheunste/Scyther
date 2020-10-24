@@ -30,6 +30,12 @@ class test_varexp_reader(unittest.TestCase):
 	def test_create_extracted_varexp(self):
 		Scyther.separate_tags_from_varexp(self.test_keys, self.test_dict)
 
+	def test_column_filter(self):
+		#content=Scyther.get_column(self.test_dict,4,"T081")
+		test_column = 4
+		test_content = "T081"
+		for varexp in Scyther.get_column(self.test_dict,test_column,test_content):
+			self.assertTrue(varexp.split(',')[test_column-1]==test_content)
 
 if __name__ == '__main__':
 	unittest.main()
