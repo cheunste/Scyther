@@ -40,14 +40,15 @@ def separate_tags_from_varexp(removal_tags,varexp_dict):
 			else:
 				varexp_file.write(varexp_line)
 
-def get_column(varexp_dict,column_number):
-    # Note that the column number from the user is 1 based and not 0 based
+def get_column(varexp_dict,column_number,content_to_find):
+	# Note that the column number from the user is 1 based and not 0 based
+	filtered_list = []
 	for tag_name,varexp_line in varexp_dict.items():
 		separated_line=varexp_line.split(',')
-		separated_line[column_number]
+		if separated_line[column_number-1] == content_to_find:
+			filtered_list.append(varexp_line)
 
-
-
+	return filtered_list
 
 
 def main():
